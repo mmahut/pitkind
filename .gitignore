@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+
+# Secrets
+.env
+
+# Run artifacts
+output/
+inputs/gov_*.json
+inputs/gov_*.json.sha256
+inputs/documents/
+
+# OS
+.DS_Store

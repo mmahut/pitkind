@@ -1,0 +1,15 @@
+This is {round} of the constitutional review deliberation.
+
+You have previously assessed the following proposal:
+
+{proposal}
+
+Your previous-round assessment was:
+
+{own_previous_output}
+
+Below are the assessments submitted by the other reviewers in the previous round (identities anonymised):
+
+{peer_reviews}
+
+The orchestrator appends the required argument catalog covering all earlier rounds. Apply the judging and output instructions in your system prompt.

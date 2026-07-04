@@ -1,0 +1,40 @@
+# pitkind live configuration; model IDs checked against OpenRouter 2026-09-07.
+# The strict response schema is generated from ModelOutput when config is loaded.
+models:
+  - openrouter_id: "anthropic/claude-fable-5.1"
+    decoding_params:
+      max_tokens: 32768
+      response_format: {type: json_schema}
+  - openrouter_id: "openai/gpt-6-astra"
+    decoding_params:
+      max_tokens: 32768
+      response_format: {type: json_schema}
+  - openrouter_id: "google/gemini-3.1-pro-preview"
+    decoding_params:
+      # Gemini reasoning tokens count against max_tokens; R2 spent 28k of 32k
+      # on reasoning and truncated the answer, so cap reasoning explicitly.
+      max_tokens: 65536
+      response_format:
+        type: json_schema
+      temperature: 0
+      top_p: 1.0
+      extra_body:
+        reasoning:
+          max_tokens: 16384
+  - openrouter_id: "mistralai/mistral-medium-3-5"
+    decoding_params: &sampling
+      max_tokens: 32768
+      response_format:
+        type: json_schema
+      temperature: 0
+      top_p: 1.0
+  - openrouter_id: "deepseek/deepseek-v4-pro-0813"
+    decoding_params: *sampling
+
+ballot_categories: ["YES", "NO", "ABSTAIN"]
+max_retries: 2
+# The egress path drops long-lived streams often; give transport errors headroom.
+max_api_retries: 6
+output_dir: "./output"
+ncl:
+  limit_lovelace: 42604371000000  # 42,604,371 ADA; operator-supplied allowance, no period accounting.

@@ -1,0 +1,47 @@
+# pitkind configuration
+# Fields marked [FIXED] must not be changed without updating the pre-registration.
+
+models:
+  - provider: anthropic
+    openrouter_id: "claude-sonnet-4-6"
+    decoding_params:
+      temperature: 0      # [FIXED] determinism
+      top_p: 1.0
+      max_tokens: 16384
+  - provider: openai
+    openrouter_id: "gpt-5.6-luna"
+    decoding_params:
+      temperature: 0
+      top_p: 1.0
+      max_tokens: 16384
+  - provider: openrouter
+    openrouter_id: "google/gemini-1.5-pro-001"
+    decoding_params:
+      temperature: 0
+      top_p: 1.0
+      max_tokens: 16384
+  - provider: openrouter
+    openrouter_id: "meta-llama/llama-3.1-405b-instruct"
+    decoding_params:
+      temperature: 0
+      top_p: 1.0
+      max_tokens: 16384
+  - provider: openrouter
+    openrouter_id: "mistralai/mistral-large-2407"
+    decoding_params:
+      temperature: 0
+      top_p: 1.0
+      max_tokens: 16384
+
+ballot_categories: ["YES", "NO", "ABSTAIN"]   # ABSTAIN requires decisive missing information
+
+max_retries: 2          # schema-validation retries per model per stage
+max_api_retries: 3      # network/rate-limit retries before marking api_failure
+output_dir: "./output"
+
+# v0.1: explicitly supplied NCL, not automatically discovered or verified.
+# Supply the available withdrawal allowance for this run; no period accounting.
+# Amount is integer lovelace, NOT ada. No default limit is assumed.
+ncl: null
+# ncl:
+#   limit_lovelace: 42604371000000  # 42,604,371 ADA

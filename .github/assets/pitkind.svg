@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="Hanna Pitkin AI agent logo, lens-bubble robot">
+  <title>Hanna Pitkin — lens-bubble robot</title>
+  <circle cx="200" cy="200" r="168" fill="#1b2430"/>
+
+  <!-- hair mass -->
+  <g fill="#d9d6cf">
+    <circle cx="118" cy="168" r="34"/>
+    <circle cx="142" cy="132" r="36"/>
+    <circle cx="178" cy="112" r="38"/>
+    <circle cx="222" cy="110" r="40"/>
+    <circle cx="258" cy="130" r="36"/>
+    <circle cx="280" cy="166" r="32"/>
+    <circle cx="108" cy="204" r="28"/>
+    <circle cx="292" cy="204" r="26"/>
+    <circle cx="160" cy="148" r="28"/>
+    <circle cx="240" cy="146" r="28"/>
+  </g>
+  <g fill="#c4c0b8">
+    <circle cx="130" cy="150" r="18"/>
+    <circle cx="200" cy="118" r="20"/>
+    <circle cx="268" cy="148" r="16"/>
+    <circle cx="116" cy="190" r="14"/>
+  </g>
+
+  <!-- antenna -->
+  <line x1="112" y1="142" x2="98" y2="108" stroke="#7aa7a3" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="96" cy="102" r="7" fill="#7aa7a3"/>
+
+  <!-- neck / robot collar -->
+  <rect x="162" y="292" width="76" height="28" rx="8" fill="#2c3a48"/>
+  <rect x="170" y="298" width="60" height="6" rx="3" fill="#4a5d6e"/>
+  <rect x="170" y="308" width="60" height="6" rx="3" fill="#4a5d6e"/>
+
+  <!-- face plate -->
+  <ellipse cx="200" cy="214" rx="78" ry="86" fill="#efe6d6"/>
+  <path d="M140 188 L200 176 L260 188" fill="none" stroke="#d3c7b4" stroke-width="1.5"/>
+  <path d="M152 230 L200 222 L248 230" fill="none" stroke="#d3c7b4" stroke-width="1.2"/>
+  <path d="M168 262 L200 256 L232 262" fill="none" stroke="#d3c7b4" stroke-width="1.2"/>
+
+  <!-- nose / mouth -->
+  <path d="M200 214 L192 236 L200 240 L208 236 Z" fill="#e0d3bf"/>
+  <path d="M186 258 Q200 266 214 258" fill="none" stroke="#8a7b6a" stroke-width="2.2" stroke-linecap="round"/>
+
+  <!-- glasses -->
+  <circle cx="168" cy="208" r="26" fill="none" stroke="#1b2430" stroke-width="4"/>
+  <circle cx="232" cy="208" r="26" fill="none" stroke="#1b2430" stroke-width="4"/>
+  <line x1="194" y1="208" x2="206" y2="208" stroke="#1b2430" stroke-width="4"/>
+  <line x1="142" y1="208" x2="128" y2="204" stroke="#1b2430" stroke-width="3" stroke-linecap="round"/>
+  <line x1="258" y1="208" x2="272" y2="204" stroke="#1b2430" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- left eye -->
+  <circle cx="168" cy="210" r="6" fill="#1b2430"/>
+
+  <!-- right lens = speech bubble -->
+  <g transform="translate(232 206)">
+    <rect x="-18" y="-16" width="36" height="26" rx="10" fill="#2f9e98"/>
+    <path d="M-4 10 L-10 20 L6 10 Z" fill="#2f9e98"/>
+    <circle cx="-6" cy="-2" r="3.2" fill="#efe6d6"/>
+    <circle cx="6" cy="-2" r="3.2" fill="#efe6d6"/>
+  </g>
+</svg>

@@ -1,0 +1,67 @@
+name: Release pitkind
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - name: amd64
+            arch: none
+            distro: none
+            base_image: ubuntu:24.04
+          - name: arm64
+            arch: aarch64
+            distro: ubuntu24.04
+            base_image: ""
+          - name: armv7
+            arch: armv7
+            distro: ubuntu24.04
+            base_image: ""
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build
+        uses: uraimo/run-on-arch-action@v3
+        with:
+          arch: ${{ matrix.arch }}
+          distro: ${{ matrix.distro }}
+          base_image: ${{ matrix.base_image }}
+          githubToken: ${{ github.token }}
+          install: |
+            apt-get update
+            apt-get install -y python3 python3-pip
+          dockerRunArgs: |
+            --volume "${PWD}:/work"
+          run: |
+            set -euxo pipefail
+            cd /work
+            python3 -m pip install --break-system-packages . pyinstaller
+            pyinstaller --onefile --name "pitkind-linux-${{ matrix.name }}" pitkind/__main__.py
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pitkind-${{ matrix.name }}
+          path: dist/pitkind-linux-${{ matrix.name }}
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: dist/pitkind-linux-*
